@@ -196,3 +196,296 @@ tr:hover {
     background-color: #e8f4f8; 
     transition: background-color 0.2s ease;
 }
+.skills-module-section {
+  padding: 40px 0;
+  background-color: #f8f9fa;
+}
+
+.module-wrapper {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.module-main-title {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.module-main-title i {
+  font-size: 2rem;
+  color: #3b82f6;
+}
+
+.module-main-title h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 5px 0 0 0;
+}
+
+.subtitle-desc {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.top-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.mini-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mini-card i {
+  font-size: 1.4rem;
+  color: #3b82f6;
+  background: #eff6ff;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.mini-card .label {
+  display: block;
+  font-size: 0.75rem;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.mini-card .value {
+  font-size: 1.1rem;
+  color: #1e293b;
+}
+
+.xp-progress-container {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+}
+
+.progress-header {
+  font-size: 0.85rem;
+  color: #475569;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.progress-track {
+  width: 100%;
+  height: 14px;
+  background-color: #e2e8f0;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #3b82f6;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 8px;
+}
+
+.progress-text {
+  font-size: 0.65rem;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.middle-stats-bar {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 30px;
+  font-size: 0.9rem;
+  color: #475569;
+}
+
+.middle-stats-bar i {
+  color: #6366f1;
+  margin-right: 5px;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 20px;
+  background-color: #cbd5e1;
+}
+
+.kanban-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.kanban-column {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.column-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 5px 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #cbd5e1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-planned { color: #d97706; border-color: #f59e0b; }
+.status-learning { color: #2563eb; border-color: #3b82f6; }
+.status-done { color: #059669; border-color: #10b981; }
+
+.skill-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+  transition: transform 0.2s;
+}
+
+.skill-card:hover {
+  transform: translateY(-2px);
+}
+
+.skill-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.skill-icon {
+  font-size: 1.2rem;
+  background: #f1f5f9;
+  padding: 6px;
+  border-radius: 6px;
+}
+
+.skill-card h4 {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.skill-status-text {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.skill-xp {
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: #f1f5f9;
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: #475569;
+}
+
+@media (max-width: 900px) {
+  .top-stats-row,
+  .kanban-board {
+    grid-template-columns: 1fr;
+  }
+}
+.skill-img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  background: #f1f5f9;
+  padding: 5px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+/* --- PAPILDOMA UŽDUOTIS 1: Animuotas gradientas „Paslaugų“ skiltyje --- */
+#services {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradientAnimation 12s ease infinite;
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+/* --- PAPILDOMA UŽDUOTIS 2: Animuotos CSS figūros „Apie“ skiltyje --- */
+#about {
+  position: relative;
+  overflow: hidden; /* Kad figūros neišlįstų už skilties ribų */
+}
+
+/* Bendras figūrų stilius */
+.css-shape {
+  position: absolute;
+  opacity: 0.2;
+  pointer-events: none; /* Kad netrukdytų paspausti mygtukų ar tekstų */
+  z-index: 1;
+}
+
+/* 1 figūra: Besisukantis langelis/apskritimas viršuje dešinėje */
+.shape-square {
+  width: 70px;
+  height: 70px;
+  border: 6px solid #2563eb;
+  border-radius: 16px;
+  top: 30px;
+  right: 50px;
+  animation: rotateShape 10s linear infinite;
+}
+
+
+.shape-triangle {
+  width: 0;
+  height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 55px solid #10b981;
+  bottom: 40px;
+  left: 40px;
+  animation: floatShape 4s ease-in-out infinite;
+}
+
+
+@keyframes rotateShape {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+@keyframes floatShape {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
