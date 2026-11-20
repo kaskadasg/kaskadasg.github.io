@@ -489,3 +489,32 @@ tr:hover {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-15px); }
 }
+.slider-box {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
+.slider-badge {
+  background: #0d6efd;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 20px;
+}
+
+.slider-scale {
+  font-size: 0.78rem;
+  color: #6c757d;
+  margin-top: 4px;
+}
+
+.custom-range::-webkit-slider-thumb {
+  cursor: pointer;
+}
+
+.custom-range::-moz-range-thumb {
+  cursor: pointer;
+}
