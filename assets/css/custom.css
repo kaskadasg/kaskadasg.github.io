@@ -299,6 +299,7 @@ tr:hover {
   align-items: center;
   justify-content: flex-end;
   padding-right: 8px;
+  transition: width 0.3s ease;
 }
 
 .progress-text {
@@ -527,4 +528,19 @@ tr:hover {
   border-radius: 20px;
   white-space: nowrap;
   flex-shrink: 0;
+}
+.kanban-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.skill-status-select {
+  margin-top: 6px;
+  padding: 3px 8px;
+  font-size: 0.78rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background-color: #f8fafc;
+  color: #1e293b;
+  cursor: pointer;
 }
