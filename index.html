@@ -216,7 +216,7 @@
           <i class="bi bi-star"></i>
           <div>
             <span class="label">Bendras XP:</span>
-            <strong class="value">350 XP</strong>
+            <strong class="value" id="totalXpValue">0 XP</strong>
           </div>
         </div>
 
@@ -224,7 +224,7 @@
           <i class="bi bi-bar-chart-steps"></i>
           <div>
             <span class="label">Lygis:</span>
-            <strong class="value">4</strong>
+            <strong class="value" id="levelValue">1</strong>
           </div>
         </div>
 
@@ -232,19 +232,19 @@
           <i class="bi bi-trophy"></i>
           <div>
             <span class="label">Rangas:</span>
-            <strong class="value text-success">Profesionalas</strong>
+            <strong class="value text-success" id="rankValue">Pradedantysis</strong>
           </div>
         </div>
-      </div>
+      </div>>
 
       <!-- Progreso juosta -->
       <div class="xp-progress-container">
         <div class="progress-header">
-          <span>Progresas iki kito lygio</span>
+          <span id="xpProgressLabel">Progresas iki kito lygio</span>
         </div>
         <div class="progress-track">
-          <div class="progress-fill" style="width: 87%;">
-            <span class="progress-text">87%</span>
+          <div class="progress-fill" id="xpProgressFill" style="width: 0%;">
+            <span class="progress-text" id="xpProgressText">0%</span>
           </div>
         </div>
       </div>
@@ -252,15 +252,15 @@
       <!-- Statistika (Įgūdžiai, Atlikta, Procentas) -->
       <div class="middle-stats-bar">
         <div class="stat-item">
-          <i class="bi bi-code-slash"></i> Įgūdžiai: <strong>7</strong>
+          <i class="bi bi-code-slash"></i> Įgūdžiai: <strong id="totalSkillsCount">0</strong>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
-          <i class="bi bi-check-circle"></i> Atlikta: <strong>3</strong>
+          <i class="bi bi-check-circle"></i> Atlikta: <strong id="completedSkillsCount">0</strong>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
-          <i class="bi bi-clock-history"></i> Procentas: <strong>43%</strong>
+          <i class="bi bi-clock-history"></i> Procentas: <strong id="completedSkillsPercent">0%</strong>
         </div>
       </div>
 
@@ -272,28 +272,7 @@
           <h3 class="column-title status-planned">
             <i class="bi bi-calendar-event"></i> Planuojama
           </h3>
-          
-          <div class="skill-card">
-            <div class="skill-info">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript" class="skill-img">
-              <div>
-                <h4>JavaSkript pagrindai</h4>
-                <span class="skill-status-text">Būsena: Planuojama</span>
-              </div>
-            </div>
-            <span class="skill-xp">XP: 50</span>
-          </div>
-
-          <div class="skill-card">
-            <div class="skill-info">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-plain.svg" alt="DOM" class="skill-img">
-              <div>
-                <h4>DOM Valdymas</h4>
-                <span class="skill-status-text">Būsena: Planuojama</span>
-              </div>
-            </div>
-            <span class="skill-xp">XP: 60</span>
-          </div>
+          <div class="kanban-cards" id="col-planned"></div>
         </div>
 
         <!-- 2 stulpelis: Mokomasi -->
@@ -301,28 +280,7 @@
           <h3 class="column-title status-learning">
             <i class="bi bi-book"></i> Mokomasi
           </h3>
-          
-          <div class="skill-card">
-            <div class="skill-info">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/matlab/matlab-original.svg" alt="MATLAB" class="skill-img">
-              <div>
-                <h4>MATLAB</h4>
-                <span class="skill-status-text">Būsena: Mokomasi</span>
-              </div>
-            </div>
-            <span class="skill-xp">XP: 70</span>
-          </div>
-
-          <div class="skill-card">
-            <div class="skill-info">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML" class="skill-img">
-              <div>
-                <h4>HTML</h4>
-                <span class="skill-status-text">Būsena: Mokomasi</span>
-              </div>
-            </div>
-            <span class="skill-xp">XP: 60</span>
-          </div>
+          <div class="kanban-cards" id="col-learning"></div>
         </div>
 
         <!-- 3 stulpelis: Atlikta -->
@@ -330,46 +288,10 @@
           <h3 class="column-title status-done">
             <i class="bi bi-check-circle"></i> Atlikta
           </h3>
-          
-          <div class="skill-card">
-            <div class="skill-info">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" alt="C++" class="skill-img">
-              <div>
-                <h4>C+ Programavimas</h4>
-                <span class="skill-status-text">Būsena: Atlikta</span>
-              </div>
-            </div>
-            <span class="skill-xp">XP: 30</span>
-          </div>
-
-          <div class="skill-card">
-            <div class="skill-info">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" class="skill-img">
-              <div>
-                <h4>Python programavimas</h4>
-                <span class="skill-status-text">Būsena: Atlikta</span>
-              </div>
-            </div>
-            <span class="skill-xp">XP: 40</span>
-          </div>
-
-          <div class="skill-card">
-            <div class="skill-info">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="GitHub" class="skill-img">
-              <div>
-                <h4>Git ir GitHub darbas</h4>
-                <span class="skill-status-text">Būsena: Atlikta</span>
-              </div>
-            </div>
-            <span class="skill-xp">XP: 40</span>
-          </div>
+          <div class="kanban-cards" id="col-done"></div>
         </div>
 
       </div>
-
-    </div> <!-- /module-wrapper pabaiga -->
-
-  </div>
 </section>
 
     </section><!-- /Resume Section -->
