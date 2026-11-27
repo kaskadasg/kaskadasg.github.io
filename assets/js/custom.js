@@ -242,3 +242,218 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+// ==========================================
+document.addEventListener('DOMContentLoaded', () => {
+  const STORAGE_KEY = 'kompetenciju_modulio_busenos_v1';
+
+  const initialSkills = [
+    {
+      id: 'js-basics',
+      name: 'JavaSkript pagrindai',
+      status: 'Planuojama',
+      xp: 50,
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg'
+    },
+    {
+      id: 'dom-control',
+      name: 'DOM Valdymas',
+      status: 'Planuojama',
+      xp: 60,
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-plain.svg'
+    },
+    {
+      id: 'matlab',
+      name: 'MATLAB',
+      status: 'Mokomasi',
+      xp: 70,
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/matlab/matlab-original.svg'
+    },
+    {
+      id: 'html',
+      name: 'HTML',
+      status: 'Mokomasi',
+      xp: 60,
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg'
+    },
+    {
+      id: 'cpp',
+      name: 'C+ Programavimas',
+      status: 'Atlikta',
+      xp: 30,
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg'
+    },
+    {
+      id: 'python',
+      name: 'Python programavimas',
+      status: 'Atlikta',
+      xp: 40,
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg'
+    },
+    {
+      id: 'github',
+      name: 'Git ir GitHub darbas',
+      status: 'Atlikta',
+      xp: 40,
+      icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg'
+    }
+  ];
+
+  const STATUSES = ['Planuojama', 'Mokomasi', 'Atlikta'];
+
+  function loadSkillsWithStorage() {
+    const savedRaw = localStorage.getItem(STORAGE_KEY);
+    if (!savedRaw) {
+      return initialSkills.map((item) => ({ ...item }));
+    }
+
+    try {
+      const savedStatuses = JSON.parse(savedRaw);
+      return initialSkills.map((item) => {
+        const storedStatus = savedStatuses[item.id];
+        const validStatus = STATUSES.includes(storedStatus) ? storedStatus : item.status;
+        return { ...item, status: validStatus };
+      });
+    } catch (err) {
+      return initialSkills.map((item) => ({ ...item }));
+    }
+  }
+
+  function saveSkillsToStorage(currentSkills) {
+    const statusMap = {};
+    currentSkills.forEach((skill) => {
+      statusMap[skill.id] = skill.status;
+    });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(statusMap));
+  }
+
+  const skills = loadSkillsWithStorage();
+
+  function calculateLevelAndRank(totalXp) {
+    if (totalXp >= 300) {
+      return { level: 4, rank: 'Profesionalas' };
+    }
+    if (totalXp >= 150) {
+      return { level: 3, rank: 'Specialistas' };
+    }
+    if (totalXp >= 50) {
+      return { level: 2, rank: 'Praktikantas' };
+    }
+    return { level: 1, rank: 'Pradedantysis' };
+  }
+
+  function updateProgressBar(totalXp, level) {
+    const fillEl = document.getElementById('xpProgressFill');
+    const textEl = document.getElementById('xpProgressText');
+    const labelEl = document.getElementById('xpProgressLabel');
+    if (!fillEl || !textEl) return;
+
+    let percent = 0;
+    let labelText = 'Progresas iki kito lygio';
+
+    if (level >= 4 || totalXp >= 300) {
+      percent = 100;
+      labelText = 'Maksimalus 4 lygis pasiektas (300+ XP)';
+    } else if (level === 3) {
+      percent = Math.round(((totalXp - 150) / (300 - 150)) * 100);
+      labelText = `Progresas iki 4 lygio (${totalXp} / 300 XP)`;
+    } else if (level === 2) {
+      percent = Math.round(((totalXp - 50) / (150 - 50)) * 100);
+      labelText = `Progresas iki 3 lygio (${totalXp} / 150 XP)`;
+    } else {
+      percent = Math.round(((totalXp - 0) / (50 - 0)) * 100);
+      labelText = `Progresas iki 2 lygio (${totalXp} / 50 XP)`;
+    }
+
+    percent = Math.max(0, Math.min(100, percent));
+
+    fillEl.style.width = `${percent}%`;
+    textEl.textContent = `${percent}%`;
+    if (labelEl) labelEl.textContent = labelText;
+  }
+
+  function updateXpLevelAndRank() {
+    const totalXp = skills
+      .filter((skill) => skill.status === 'Atlikta')
+      .reduce((sum, skill) => sum + skill.xp, 0);
+
+    const { level, rank } = calculateLevelAndRank(totalXp);
+
+    const xpEl = document.getElementById('totalXpValue');
+    const levelEl = document.getElementById('levelValue');
+    const rankEl = document.getElementById('rankValue');
+
+    if (xpEl) xpEl.textContent = `${totalXp} XP`;
+    if (levelEl) levelEl.textContent = `${level}`;
+    if (rankEl) rankEl.textContent = rank;
+
+    updateProgressBar(totalXp, level);
+  }
+
+  function updateSkillsStats() {
+    const totalCount = skills.length;
+    const completedCount = skills.filter((skill) => skill.status === 'Atlikta').length;
+    const percent = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 0;
+
+    const totalEl = document.getElementById('totalSkillsCount');
+    const completedEl = document.getElementById('completedSkillsCount');
+    const percentEl = document.getElementById('completedSkillsPercent');
+
+    if (totalEl) totalEl.textContent = `${totalCount}`;
+    if (completedEl) completedEl.textContent = `${completedCount}`;
+    if (percentEl) percentEl.textContent = `${percent}%`;
+  }
+
+  function renderSkills() {
+    const columns = {
+      'Planuojama': document.getElementById('col-planned'),
+      'Mokomasi': document.getElementById('col-learning'),
+      'Atlikta': document.getElementById('col-done')
+    };
+
+    Object.values(columns).forEach((col) => {
+      if (col) col.innerHTML = '';
+    });
+
+    skills.forEach((skill) => {
+      const targetCol = columns[skill.status];
+      if (!targetCol) return;
+
+      const optionsHtml = STATUSES.map((statusOption) => {
+        const selected = skill.status === statusOption ? 'selected' : '';
+        return `<option value="${statusOption}" ${selected}>${statusOption}</option>`;
+      }).join('');
+
+      const card = document.createElement('div');
+      card.className = 'skill-card';
+      card.innerHTML = `
+        <div class="skill-info">
+          <img src="${skill.icon}" alt="${skill.name}" class="skill-img">
+          <div>
+            <h4>${skill.name}</h4>
+            <span class="skill-status-text">Būsena: ${skill.status}</span>
+            <div>
+              <select class="skill-status-select" data-id="${skill.id}" aria-label="Keisti būseną: ${skill.name}">
+                ${optionsHtml}
+              </select>
+            </div>
+          </div>
+        </div>
+        <span class="skill-xp">XP: ${skill.xp}</span>
+      `;
+
+      const selectEl = card.querySelector('.skill-status-select');
+      selectEl.addEventListener('change', (e) => {
+        skill.status = e.target.value;
+        saveSkillsToStorage(skills);
+        renderSkills();
+      });
+
+      targetCol.appendChild(card);
+    });
+
+    updateXpLevelAndRank();
+    updateSkillsStats();
+  }
+
+  renderSkills();
+});
