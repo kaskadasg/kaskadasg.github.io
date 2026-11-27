@@ -219,7 +219,6 @@ document.addEventListener('DOMContentLoaded', () => {
     resetBtn.addEventListener('click', () => {
       form.reset();
 
-      // Grąžiname slankiklius į 1 (kairę) ir atnaujiname jų žymes
       sliderKeys.forEach((key) => {
         if (fields[key]) {
           fields[key].value = 1;
