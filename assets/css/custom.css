@@ -428,7 +428,6 @@ tr:hover {
   border-radius: 8px;
   flex-shrink: 0;
 }
-/* --- PAPILDOMA UŽDUOTIS 1: Animuotas gradientas „Paslaugų“ skiltyje --- */
 #services {
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
@@ -442,17 +441,17 @@ tr:hover {
 }
 
 
-/* --- PAPILDOMA UŽDUOTIS 2: Animuotos CSS figūros „Apie“ skiltyje --- */
+
 #about {
   position: relative;
-  overflow: hidden; /* Kad figūros neišlįstų už skilties ribų */
+  overflow: hidden; 
 }
 
 /* Bendras figūrų stilius */
 .css-shape {
   position: absolute;
   opacity: 0.2;
-  pointer-events: none; /* Kad netrukdytų paspausti mygtukų ar tekstų */
+  pointer-events: none; 
   z-index: 1;
 }
 
